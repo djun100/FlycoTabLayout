@@ -1,17 +1,17 @@
 package com.flyco.tablayoutsamples.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.flyco.tablayoutsamples.adapter.SimpleHomeAdapter;
 
-public class SimpleHomeActivity extends AppCompatActivity {
+public class SimpleHomeActivity extends Activity {
     private Context mContext = this;
     private final String[] mItems = {"SlidingTabLayout", "CommonTabLayout", "SegmentTabLayout"};
     private final Class<?>[] mClasses = {SlidingTabActivity.class, CommonTabActivity.class,

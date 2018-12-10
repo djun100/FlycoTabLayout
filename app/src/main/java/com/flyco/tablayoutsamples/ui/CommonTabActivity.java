@@ -4,25 +4,26 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.flyco.tablayout.CommonTabLayout;
-import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.entity.TabTextEntity;
+import com.flyco.tablayout.listener.ITabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
-import com.flyco.tablayoutsamples.entity.TabEntity;
+import com.flyco.tablayout.entity.TabEntity;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class CommonTabActivity extends AppCompatActivity {
+public class CommonTabActivity extends FragmentActivity {
     private Context mContext = this;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private ArrayList<Fragment> mFragments2 = new ArrayList<>();
@@ -34,7 +35,8 @@ public class CommonTabActivity extends AppCompatActivity {
     private int[] mIconSelectIds = {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
-    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private ArrayList<ITabEntity> mTabEntities = new ArrayList<>();
+    private ArrayList<ITabEntity> mTextTabEntities = new ArrayList<>();
     private View mDecorView;
     private ViewPager mViewPager;
     private CommonTabLayout mTabLayout_1;
@@ -58,7 +60,10 @@ public class CommonTabActivity extends AppCompatActivity {
 
 
         for (int i = 0; i < mTitles.length; i++) {
+            //有图片tab栏这样用
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            //纯文字tab栏这样用
+            mTextTabEntities.add(new TabTextEntity(mTitles[i]));
         }
 
         mDecorView = getWindow().getDecorView();
@@ -84,7 +89,7 @@ public class CommonTabActivity extends AppCompatActivity {
         mTabLayout_1.setTabData(mTabEntities);
         tl_2();
         mTabLayout_3.setTabData(mTabEntities, this, R.id.fl_change, mFragments2);
-        mTabLayout_4.setTabData(mTabEntities);
+        mTabLayout_4.setTabData(mTextTabEntities);
         mTabLayout_5.setTabData(mTabEntities);
         mTabLayout_6.setTabData(mTabEntities);
         mTabLayout_7.setTabData(mTabEntities);

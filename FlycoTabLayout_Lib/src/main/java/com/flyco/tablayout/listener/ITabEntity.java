@@ -2,7 +2,7 @@ package com.flyco.tablayout.listener;
 
 import android.support.annotation.DrawableRes;
 
-public interface CustomTabEntity {
+public interface ITabEntity {
     String getTabTitle();
 
     @DrawableRes

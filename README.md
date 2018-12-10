@@ -1,3 +1,13 @@
+# 扩展
+基于2.0.2定制，去掉多余依赖，对使用进行了封装
+```
+        for (int i = 0; i < mTitles.length; i++) {
+            //有图片tab栏这样用
+            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            //纯文字tab栏这样用
+            mTextTabEntities.add(new TabTextEntity(mTitles[i]));
+        }
+```
 # FlycoTabLayout
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlycoTabLayout-green.svg?style=true)](https://android-arsenal.com/details/1/2756)
 #### [中文版](https://github.com/H07000223/FlycoTabLayout/blob/master/README_CN.md)
