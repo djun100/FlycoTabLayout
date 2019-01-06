@@ -1,3 +1,13 @@
+# 使用
+```
+﻿repositories {
+        // ...
+        maven { url "https://jitpack.io" }
+    }
+
+﻿ implementation 'com.github.djun100:FlycoTabLayout:-SNAPSHOT'
+```
+
 # 扩展
 基于2.0.2定制，去掉多余依赖，对使用进行了封装
 ```
