@@ -61,7 +61,8 @@ public class CommonTabActivity extends FragmentActivity {
 
         for (int i = 0; i < mTitles.length; i++) {
             //有图片tab栏这样用
-            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            mTabEntities.add(new TabEntity(mTitles[i], -1, mIconUnselectIds[i]));
+//            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
             //纯文字tab栏这样用
             mTextTabEntities.add(new TabTextEntity(mTitles[i]));
         }
