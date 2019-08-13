@@ -100,6 +100,8 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     private float mIconHeight;
     private float mIconMargin;
 
+    private boolean  mTextVisible;
+
     private int mHeight;
 
     /** anim */
@@ -183,6 +185,8 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         mIconHeight = ta.getDimension(R.styleable.CommonTabLayout_tl_iconHeight, dp2px(0));
         mIconMargin = ta.getDimension(R.styleable.CommonTabLayout_tl_iconMargin, dp2px(2.5f));
 
+        mTextVisible = ta.getBoolean(R.styleable.CommonTabLayout_tl_textVisible, true);
+
         mTabSpaceEqual = ta.getBoolean(R.styleable.CommonTabLayout_tl_tab_space_equal, true);
         mTabWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_tab_width, dp2px(-1));
         mTabPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_tab_padding, mTabSpaceEqual || mTabWidth > 0 ? dp2px(0) : dp2px(10));
@@ -232,10 +236,15 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
 
     /** 创建并添加tab */
     private void addTab(final int position, View tabView) {
-        TextView tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);
-        tv_tab_title.setText(mTabEntitys.get(position).getTabTitle());
+        TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
+        if (mTextVisible) {
+            tv_tab_title.setVisibility(VISIBLE);
+            tv_tab_title.setText(mTabEntitys.get(position).getTabTitle());
+        }else {
+            tv_tab_title.setVisibility(GONE);
+        }
         if (mIconVisible) {
-            ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
+            ImageView iv_tab_icon = tabView.findViewById(R.id.iv_tab_icon);
             iv_tab_icon.setImageResource(mTabEntitys.get(position).getTabUnselectedIcon());
         }
 

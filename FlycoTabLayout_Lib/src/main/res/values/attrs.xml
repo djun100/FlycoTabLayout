@@ -169,6 +169,8 @@
         </attr>
         <!-- 设置icon与文字间距 -->
         <attr name="tl_iconMargin" format="dimension"/>
+        <!-- 设置文字是否可见 -->
+        <attr name="tl_textVisible" format="boolean"/>
 
     </declare-styleable>
 

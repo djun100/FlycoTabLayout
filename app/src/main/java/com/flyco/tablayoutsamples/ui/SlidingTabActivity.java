@@ -72,7 +72,7 @@ public class SlidingTabActivity extends FragmentActivity implements OnTabSelectL
         tabLayout_5.setViewPager(vp);
         tabLayout_6.setViewPager(vp);
         tabLayout_7.setViewPager(vp, mTitles);
-        tabLayout_8.setViewPager(vp, mTitles, this, mFragments);
+        tabLayout_8.setViewPager(vp, mTitles, SlidingTabActivity.this, mFragments);
         tabLayout_9.setViewPager(vp);
         tabLayout_10.setViewPager(vp);
 
