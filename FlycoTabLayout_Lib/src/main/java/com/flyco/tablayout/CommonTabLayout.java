@@ -243,7 +243,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         }else {
             tv_tab_title.setVisibility(GONE);
         }
-        if (mIconVisible) {
+        if (mIconVisible && mTabEntitys.get(position).getTabUnselectedIcon()>0) {
             ImageView iv_tab_icon = tabView.findViewById(R.id.iv_tab_icon);
             iv_tab_icon.setImageResource(mTabEntitys.get(position).getTabUnselectedIcon());
         }
@@ -297,10 +297,12 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             if (mIconVisible) {
                 iv_tab_icon.setVisibility(View.VISIBLE);
                 ITabEntity tabEntity = mTabEntitys.get(i);
-                if (tabEntity.getTabSelectedIcon() < 0) {
-                    iv_tab_icon.setImageResource(tabEntity.getTabUnselectedIcon());
-                } else {
-                    iv_tab_icon.setImageResource(i == mCurrentTab ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
+                if (tabEntity.getTabUnselectedIcon()>0) {
+                    if (tabEntity.getTabSelectedIcon() < 0) {
+                        iv_tab_icon.setImageResource(tabEntity.getTabUnselectedIcon());
+                    } else {
+                        iv_tab_icon.setImageResource(i == mCurrentTab ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
+                    }
                 }
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         mIconWidth <= 0 ? LinearLayout.LayoutParams.WRAP_CONTENT : (int) mIconWidth,
@@ -331,10 +333,12 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             if (mIconVisible) {
                 ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
                 ITabEntity tabEntity = mTabEntitys.get(i);
-                if (tabEntity.getTabSelectedIcon()<0) {
-                    iv_tab_icon.setImageResource(tabEntity.getTabUnselectedIcon());
-                } else {
-                    iv_tab_icon.setImageResource(isSelect ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
+                if (tabEntity.getTabUnselectedIcon()>0) {
+                    if (tabEntity.getTabSelectedIcon()<0) {
+                        iv_tab_icon.setImageResource(tabEntity.getTabUnselectedIcon());
+                    } else {
+                        iv_tab_icon.setImageResource(isSelect ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
+                    }
                 }
             }
             if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
@@ -889,10 +893,12 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             float margin = 0;
             if (mIconVisible) {
                 if (iconH <= 0) {
-                    if (mTabEntitys.get(position).getTabSelectedIcon()<0) {
-                        iconH = mContext.getResources().getDrawable(mTabEntitys.get(position).getTabUnselectedIcon()).getIntrinsicHeight();
-                    } else {
-                        iconH = mContext.getResources().getDrawable(mTabEntitys.get(position).getTabSelectedIcon()).getIntrinsicHeight();
+                    if (mTabEntitys.get(position).getTabUnselectedIcon()>0) {
+                        if (mTabEntitys.get(position).getTabSelectedIcon()<0) {
+                            iconH = mContext.getResources().getDrawable(mTabEntitys.get(position).getTabUnselectedIcon()).getIntrinsicHeight();
+                        } else {
+                            iconH = mContext.getResources().getDrawable(mTabEntitys.get(position).getTabSelectedIcon()).getIntrinsicHeight();
+                        }
                     }
                 }
                 margin = mIconMargin;
