@@ -130,7 +130,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
 
         mIndicatorColor = ta.getColor(R.styleable.SegmentTabLayout_tl_indicator_color, Color.parseColor("#222831"));
         mIndicatorHeight = ta.getDimension(R.styleable.SegmentTabLayout_tl_indicator_height, -1);
-        mIndicatorCornerRadius = ta.getDimension(R.styleable.SegmentTabLayout_tl_indicator_corner_radius, -1);
+        mIndicatorCornerRadius = ta.getDimension(R.styleable.SegmentTabLayout_tl_indicator_corner_radius, Float.MAX_VALUE);
         mIndicatorMarginLeft = ta.getDimension(R.styleable.SegmentTabLayout_tl_indicator_margin_left, dp2px(0));
         mIndicatorMarginTop = ta.getDimension(R.styleable.SegmentTabLayout_tl_indicator_margin_top, 0);
         mIndicatorMarginRight = ta.getDimension(R.styleable.SegmentTabLayout_tl_indicator_margin_right, dp2px(0));
@@ -359,9 +359,9 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
             mIndicatorHeight = height - mIndicatorMarginTop - mIndicatorMarginBottom;
         }
 
-        if (mIndicatorCornerRadius < 0 || mIndicatorCornerRadius > mIndicatorHeight / 2) {
-            mIndicatorCornerRadius = mIndicatorHeight / 2;
-        }
+//        if (mIndicatorCornerRadius < 0 || mIndicatorCornerRadius > mIndicatorHeight / 2) {
+//            mIndicatorCornerRadius = mIndicatorHeight / 2;
+//        }
 
         //draw rect
         mRectDrawable.setColor(mBarColor);
